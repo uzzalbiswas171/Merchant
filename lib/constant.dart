@@ -14,9 +14,17 @@ const defaultBackgroundColor = Color(0xffe5e3df);
 const figma_white = Color(0xffFFFFFF);
 const TextFieldColor = Color(0xffF2F2F2);
 
+/// Ocado Courier Base URL -------------------------///
 //const BaseUrl="http://ocadocourier.com";
+
+/// E----Courier----BaseURL -------------------------///
 const BaseUrl="https://btiibd.com/";
 
 
+/// //////////////////// For new App ////////////////////////////////////////
+ // # Need to change Splash Screen
+ // # Need to Change Icon
+ // # Need to Change Color
+/// //////////////////// Foe new app ////////////////////////////////////////
 
 

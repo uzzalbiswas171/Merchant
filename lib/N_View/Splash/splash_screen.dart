@@ -45,6 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            /// Ocado Courier------------------- ///
         //   Container(
         //   height: 166,
         //   width: 250,
@@ -52,6 +53,8 @@ class _SplashScreenState extends State<SplashScreen> {
         //       image: DecorationImage(image: AssetImage("assets/splashicon.png"),fit: BoxFit.fill)
         //   )
         // ),
+
+            /// E --- Courier .....///
           Container(
           height: 166,
           width: 250,
