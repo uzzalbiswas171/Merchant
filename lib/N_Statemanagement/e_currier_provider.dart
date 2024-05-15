@@ -107,6 +107,12 @@ class E_Currier_Provierd with ChangeNotifier{
     notice= await CustomHttp().getnoticeRequestt(context);
     notifyListeners();
   }
+  ///Get All balenceHistoryProvider
+  dynamic balenceHistory ;
+  balenceHistoryProvider(BuildContext context)async{
+    balenceHistory= await CustomHttp().balenceHistoryfunction(context);
+    notifyListeners();
+  }
 
 
 }

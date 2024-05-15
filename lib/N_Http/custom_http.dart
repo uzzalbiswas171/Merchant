@@ -239,4 +239,18 @@ dynamic parceltracklist ;
     }
     return parceltracklist;
  }
+
+
+/// ------------ balaccehistory--------------///
+dynamic balenceHistory ;
+  balenceHistoryfunction(BuildContext context,)async{
+ String link="${BaseUrl}/api/auth/balaccehistory";
+    try{
+      Response response=await http.get(Uri.parse(link),headers: headers);
+      balenceHistory=jsonDecode(response.body);
+    }catch(e){
+      print("Catch error is balenceHistory============ > $e");
+    }
+    return balenceHistory;
+ }
 }

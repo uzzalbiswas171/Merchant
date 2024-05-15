@@ -106,8 +106,9 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                 ),
                 SizedBox(height: 30,),
                 CustomButton(onTap: () {
+                  Provider.of<E_Currier_Provierd>(context,listen: false).balenceHistoryProvider(context);
                   Navigator.push(context, MaterialPageRoute(builder: (context) => BalanchScreen(),));
-                }, text: 'Payment Request', button_text_fontSize: 16, button_height: 55)
+                }, text: 'AVAILABLE BALANCE', button_text_fontSize: 16, button_height: 55)
                 ,SizedBox(height: 20,),
                 Stack(
                   children: [
