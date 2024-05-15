@@ -14,7 +14,8 @@ const defaultBackgroundColor = Color(0xffe5e3df);
 const figma_white = Color(0xffFFFFFF);
 const TextFieldColor = Color(0xffF2F2F2);
 
-const BaseUrl="http://ocadocourier.com";
+//const BaseUrl="http://ocadocourier.com";
+const BaseUrl="https://btiibd.com/";
 
 
 

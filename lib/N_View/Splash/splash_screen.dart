@@ -45,11 +45,18 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+        //   Container(
+        //   height: 166,
+        //   width: 250,
+        //   decoration: BoxDecoration(
+        //       image: DecorationImage(image: AssetImage("assets/splashicon.png"),fit: BoxFit.fill)
+        //   )
+        // ),
           Container(
           height: 166,
           width: 250,
           decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/splashicon.png"),fit: BoxFit.fill)
+              image: DecorationImage(image: AssetImage("assets/Drawerimage/e_courier.png"),fit: BoxFit.fill)
           )
         ),
             SizedBox(height: MediaQuery.of(context).size.height/9,),
