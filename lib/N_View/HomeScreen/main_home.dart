@@ -24,7 +24,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   TextEditingController Trackcontroller=TextEditingController();
   @override
   void initState() {
-    Provider.of<E_Currier_Provierd>(context,listen: false).getgetdatewiseListProvider(context, "$selectedDatee", "$selected2Datee");
+    Provider.of<E_Currier_Provierd>(context,listen: false).balenceHistoryProvider(context);
+    // Provider.of<E_Currier_Provierd>(context,listen: false).getgetdatewiseListProvider(context, "$selectedDatee", "$selected2Datee");
     Provider.of<E_Currier_Provierd>(context,listen: false).getTotalOrderProvider(context);
     Provider.of<E_Currier_Provierd>(context,listen: false).getgetdatewiseListProvider(context, "${DateFormat('yyyy-MM-dd').format(DateTime.now()).toString()}", "${DateFormat('yyyy-MM-dd').format(DateTime.now()).toString()}");
     // TODO: implement initState
@@ -33,6 +34,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   final _key=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final balenceHistory=  Provider.of<E_Currier_Provierd>(context).balenceHistory;
     List TotalOrdetlist=Provider.of<E_Currier_Provierd>(context).getTotalOrderList;
     final getdatewiseList=Provider.of<E_Currier_Provierd>(context).getdatewiseList;
     print("asaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $getdatewiseList");
@@ -42,7 +44,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           Provider.of<E_Currier_Provierd>(context,listen: false).getProfileProvider(context);
           Provider.of<E_Currier_Provierd>(context,listen: false).getgetdatewiseListProvider(context, "$selectedDatee", "$selected2Datee");
           Provider.of<E_Currier_Provierd>(context,listen: false).getTotalOrderProvider(context);
-          Provider.of<E_Currier_Provierd>(context,listen: false).getgetdatewiseListProvider(context, "${DateFormat('yyyy-MM-dd').format(DateTime.now()).toString()}", "${DateFormat('yyyy-MM-dd').format(DateTime.now()).toString()}");
+          Provider.of<E_Currier_Provierd>(context,listen: false).balenceHistoryProvider(context);
+       //   Provider.of<E_Currier_Provierd>(context,listen: false).getgetdatewiseListProvider(context, "${DateFormat('yyyy-MM-dd').format(DateTime.now()).toString()}", "${DateFormat('yyyy-MM-dd').format(DateTime.now()).toString()}");
           setState(() {
 
           });
@@ -321,8 +324,8 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                      children: [
                        Image(image: AssetImage("assets/orderprocessing.png"),fit: BoxFit.fill,height: 25,width: 25,),
                        SizedBox(width: 10,),
-                       CustomText(text: "Process Parcel Amount", fontSize: 19, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF)),
-                       CustomText(text: " ৳ 5000.00", fontSize: 17, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF) ),
+                       CustomText(text: "Process Parcel Amount", fontSize: 18, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF)),
+                       CustomText(text:"${balenceHistory}"=="null"?"0": " ৳ ${balenceHistory["payable_deliveryCharge"]}", fontSize: 17, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF) ),
                      ],
                    ),
                  ),
