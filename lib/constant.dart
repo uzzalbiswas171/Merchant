@@ -39,14 +39,14 @@ const TextFieldColor = Color(0xffF2F2F2);
 // const login_headline="Ecommerce Courier";
 
 /// for ocado softzon
-const BaseUrl="https://courier.softzone24.xyz";
-const custom_image="assets/splashicon.png";
-const customredcolor=Color(0xffE83330);
-  const login_headline="Ocado Courier";
+// const BaseUrl="https://courier.softzone24.xyz";
+// const custom_image="assets/splashicon.png";
+// const customredcolor=Color(0xffE83330);
+//   const login_headline="Ocado Courier";
 
 
 /// for ocado Courier
-//      const BaseUrl="https://ocadocourier.com";
-//      const custom_image="assets/splashicon.png";
-//      const customredcolor=Color(0xffE83330);
-//      const login_headline="Ocado Courier";
+     const BaseUrl="https://ocadocourier.com";
+     const custom_image="assets/splashicon.png";
+     const customredcolor=Color(0xffE83330);
+     const login_headline="Ocado Courier";
