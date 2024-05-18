@@ -67,7 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Welcome To Ocado Courier",style: GoogleFonts.roboto(
+                      Text("Welcome To ${custom_text}",style: GoogleFonts.roboto(
+                    //  Text("Welcome To Ocado Courier",style: GoogleFonts.roboto(
                           fontWeight: FontWeight.w700,
                           fontSize: 15,
                           color: Color(0xff000000)
@@ -158,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(),));
                                   },
-                                  child: CustomText(text: "Sign up here", fontSize: 15, fontWeight:FontWeight.w400,color: Colors.red,))
+                                  child: CustomText(text: "Sign up here", fontSize: 15, fontWeight:FontWeight.w400,color: redColor,))
                             ],
                           ),
                         ),

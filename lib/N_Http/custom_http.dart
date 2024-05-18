@@ -119,6 +119,8 @@ class CustomHttp{
       )async{
     try{
       var response = await http.get(Uri.parse("${BaseUrl}/api/pickuparea"));
+      print("cccccccccccccc ${response.body}");
+
       var data =  jsonDecode(response.body);
       PickupArea = data;
     }catch(e){

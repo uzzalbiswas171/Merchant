@@ -1,4 +1,5 @@
 
+import 'package:e_currier/constant.dart';
 import 'package:flutter/material.dart';
 
 import '../CustomText/custom_text.dart';
@@ -16,7 +17,7 @@ class SelectionOptionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:  [
            CustomText(text: "$leftText", fontSize: 22, fontWeight: FontWeight.bold),
-           CustomText(text: "$rite_text", fontSize: 16, fontWeight: FontWeight.w600,color: Colors.red),
+           CustomText(text: "$rite_text", fontSize: 16, fontWeight: FontWeight.w600,color: redColor),
           ]),
     );
   }

@@ -45,7 +45,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
                   ,
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Text('Ocado Courier offers the most convenient instant payment method',style: GoogleFonts.urbanist(
+                    child: Text('${custom_text} offers the most convenient instant payment method',style: GoogleFonts.urbanist(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: Colors.black87

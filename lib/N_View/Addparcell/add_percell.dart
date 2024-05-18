@@ -91,8 +91,8 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.red,
-              image: DecorationImage(image: AssetImage("assets/bg6.jpeg"),fit: BoxFit.fill)
+              color: redColor,
+            //  image: DecorationImage(image: AssetImage("assets/bg6.jpeg"),fit: BoxFit.fill)
 
           ),
 
@@ -558,7 +558,7 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    CustomText(text: "Image",color: Colors.redAccent.shade200, fontSize: 20, fontWeight: FontWeight.bold),
+                                    CustomText(text: "Image",color: redColor, fontSize: 20, fontWeight: FontWeight.bold),
                                     Container(
                                       height: 80,
                                       width: 150,
@@ -625,7 +625,7 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
 
   List percel_list=["Fragile","Liquid", "Package"];
 
-  String ?  selectedDatee;
+  String ?  selectedDatee="${DateTime.now()}";
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -639,14 +639,19 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
     }
   }
 
-
+  functionval()async{
+    var request = http.MultipartRequest("POST",uri);
+    var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
+    request.files.add(nid_cardd);
+  }
+  dun(){}
+  final uri = Uri.parse("${BaseUrl}/api/auth/parcel_store");
   registerSeller() async {
 print("ffffffffffffffffffffffffffffff $division_id");
 print("ffffffffffffffffffffffffffffff $district_id");
 print("ffffffffffffffffffffffffffffff $upazilla_id");
 print("ffffffffffffffffffffffffffffff $selectedDatee");
     try{
-      final uri = Uri.parse("${BaseUrl}/api/auth/parcel_store");
       var request = http.MultipartRequest("POST",uri);
       request.headers.addAll({
         "accept": "application/json",
@@ -679,8 +684,7 @@ print("ffffffffffffffffffffffffffffff $selectedDatee");
       request.fields['status'] = "0";
       request.fields['admin_id'] = admin_id.text.toString();
 
-      var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
-      request.files.add(nid_cardd);
+      "${_image}"=="null"?dun(): functionval();
       var response = await request.send();
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);

@@ -76,7 +76,7 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
        },
        child: Scaffold(
          body: Container(
-           color: Colors.red,
+           color: redColor,
           height: double.infinity,
           width: double.infinity,
            child: SingleChildScrollView(
@@ -85,7 +85,7 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
                  Container(
                    height: 300,
                    width: double.infinity,
-                   color: Colors.red,
+                   color: redColor,
                    child: Column(
                      children: [
                        Container(
@@ -380,11 +380,16 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
            ),
      );
   }
-
+  functionval()async{
+    var request = http.MultipartRequest("POST",uri);
+    nid_cardd ="_image"=="null"?"": await http.MultipartFile.fromPath('image', _image!.path.toString());
+    request.files.add(nid_cardd);
+  }
+  dun(){}
+  final uri = Uri.parse("${BaseUrl}/api/auth/merchant_profile_edit?id=${GetStorage().read("GetProfile")["id"]}");
   marchentProfileUpdate() async {
 
     try{
-      final uri = Uri.parse("${BaseUrl}/api/auth/merchant_profile_edit?id=${GetStorage().read("GetProfile")["id"]}");
       var request = http.MultipartRequest("POST",uri);
       request.headers.addAll({
         "accept": "application/json",
@@ -401,11 +406,10 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
       request.fields['trans_method'] ="${GetStorage().read("GetProfile")["trans_method"]}";
       request.fields['picup_address'] =_pickup_controller.text.toString();
       request.fields['password'] = _password_controller.text.toString();
-      var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
-      request.files.add(nid_cardd);
+      "${_image}"=="null"?dun(): functionval();
       var response = await request.send();
-      var responseData = await response.stream.toBytes();
-      var responseString = String.fromCharCodes(responseData);
+       var responseData = await response.stream.toBytes();
+       var responseString = String.fromCharCodes(responseData);
       print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.statusCode}");
       if(response.statusCode==200){
         Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
@@ -444,7 +448,7 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
 
     }
   }
-
+  var nid_cardd;
   bool is_clicked=false;
   bool is_clicked_register=false;
  }

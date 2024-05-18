@@ -1,3 +1,4 @@
+import 'package:e_currier/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(11),
-              color: Colors.red
+              color: redColor
             ),
             child: Row(
               children: [
@@ -47,7 +48,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                radius: 25,
                child: CircleAvatar(
                  radius: 20,
-                 child: Image.asset("assets/ocdooo.png",fit: BoxFit.fill,),
+                child: Image.asset("${custom_image}",fit: BoxFit.fill,),
+                 //  child: Image.asset("assets/Drawerimage/e_courier.png",fit: BoxFit.fill,),
                ),
              ),
                 SizedBox(

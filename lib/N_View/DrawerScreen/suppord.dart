@@ -42,7 +42,8 @@ class _SupportScreenState extends State<SupportScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomText(text: "Ocado Customer", fontSize: 20, fontWeight: FontWeight.w700),
+                   //   CustomText(text: "Ocado Customer", fontSize: 20, fontWeight: FontWeight.w700),
+                      CustomText(text: "Ecommerce Customer", fontSize: 20, fontWeight: FontWeight.w700),
                       CustomText(text: "Care", fontSize: 20, fontWeight: FontWeight.w700),
                       Container(
                           height: 30,

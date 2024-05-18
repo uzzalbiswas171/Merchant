@@ -4,6 +4,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:spelling_number/spelling_number.dart';
 
 import '../../N_CustomWidget/CustomText/custom_text.dart';
+import '../../constant.dart';
 
 class InvoiceScreen extends StatefulWidget {
   InvoiceScreen({super.key,required this.map});
@@ -68,7 +69,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           CustomText(text: "From", fontSize: 18, fontWeight: FontWeight.bold),
-                          CustomText(text: "Ocado Courier", fontSize: 18, fontWeight: FontWeight.bold),
+                          CustomText(text: "${custom_text}", fontSize: 18, fontWeight: FontWeight.bold),
                           QrImageView(
                             data: '${"#OC${widget.map["parcel_id"]}"}',
                             version: QrVersions.auto,

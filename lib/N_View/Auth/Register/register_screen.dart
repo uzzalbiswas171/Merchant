@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   File ? _image;
   File ? _nidback;
   File ? _shopelicenc;
-  File ? NIDBACK;
+   File ?  NIDBACK;
   File ? NIDFONT;
   File ? imagee;
   final picker = ImagePicker();
@@ -450,7 +450,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                            crossAxisAlignment: CrossAxisAlignment.center,
                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
-                                             CustomText(text: "Photo              ",color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold),
+                                             CustomText(text: "Photo              ",color: redColor, fontSize: 20, fontWeight: FontWeight.bold),
                                              Expanded(
                                                child: Container(
                                                  height: 80,
@@ -482,7 +482,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                            crossAxisAlignment: CrossAxisAlignment.center,
                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
-                                             CustomText(text: "Shop Licence   ",color: Colors.red, fontSize: 17, fontWeight: FontWeight.bold),
+                                             CustomText(text: "Shop Licence   ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
                                              Expanded(
                                                child: Container(
                                                  height: 80,
@@ -513,7 +513,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                            crossAxisAlignment: CrossAxisAlignment.center,
                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
-                                             CustomText(text: "NID FONT           ",color: Colors.red, fontSize: 17, fontWeight: FontWeight.bold),
+                                             CustomText(text: "NID FONT           ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
                                              Expanded(
                                                child: Container(
                                                  height: 80,
@@ -544,7 +544,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                            crossAxisAlignment: CrossAxisAlignment.center,
                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
-                                             CustomText(text: "NID BACK         ",color: Colors.red, fontSize: 17, fontWeight: FontWeight.bold),
+                                             CustomText(text: "NID BACK         ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
                                              Expanded(
                                                child: Container(
                                                  height: 80,
@@ -688,11 +688,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       request.fields['account_type'] = _account_typeController.text.toString();
       request.fields['branch'] = _branchController.text.toString();
       request.fields['picup_address'] = _picup_addressController.text.toString();
-
+      print("ssssssssssssssssssssssssssssssssss ${ _image!.path.toString()}");
       var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
       request.files.add(nid_cardd);
+
       var father_nidd = await http.MultipartFile.fromPath('nid_back', NIDBACK!.path.toString() );
       request.files.add(father_nidd);
+
       var driving_licensed = await http.MultipartFile.fromPath('nid', NIDFONT!.path.toString() );
       request.files.add(driving_licensed);
 
@@ -729,10 +731,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
           duration:  Duration(seconds: 1),
         )..show(context);
       }else{
+          setState(() {
 
+        });
       }
       print("====Registration Data===========>$data");
-    }catch(erroe){
+    }
+    catch(erroe){
+      setState(() {
+        is_clicked_register=false;
+      });
       print("Catch Error $erroe");
     }
   }
