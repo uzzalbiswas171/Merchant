@@ -238,7 +238,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     CustomText(text:"${getdatewiseList}"=="null"?"0": "${getdatewiseList["active"]} ", fontSize: 13, fontWeight: FontWeight.w400),
@@ -263,7 +263,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Row(
@@ -296,7 +296,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     CustomText(text:"${getdatewiseList}"=="null"?"0":  "${getdatewiseList["return"]} ", fontSize: 13, fontWeight: FontWeight.w400),
