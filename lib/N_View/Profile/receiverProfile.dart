@@ -64,14 +64,12 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
   }
   @override
   Widget build(BuildContext context) {
-
+print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile")}");
+print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile").runtimeType}");
      return RefreshIndicator(
        onRefresh: () {
          return Future((){
            Provider.of<E_Currier_Provierd>(context,listen: false).getProfileProvider(context);
-           setState(() {
-
-           });
          });
        },
        child: Scaffold(
@@ -381,16 +379,15 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
      );
   }
   functionval()async{
-    var request = http.MultipartRequest("POST",uri);
     nid_cardd ="_image"=="null"?"": await http.MultipartFile.fromPath('image', _image!.path.toString());
     request.files.add(nid_cardd);
   }
   dun(){}
-  final uri = Uri.parse("${BaseUrl}/api/auth/merchant_profile_edit?id=${GetStorage().read("GetProfile")["id"]}");
+  var request = http.MultipartRequest("POST",Uri.parse("${BaseUrl}/api/auth/merchant_profile_edit?id=${GetStorage().read("GetProfile")["id"]}"));
+
   marchentProfileUpdate() async {
 
     try{
-      var request = http.MultipartRequest("POST",uri);
       request.headers.addAll({
         "accept": "application/json",
         'Authorization': 'Bearer ${GetStorage().read("Api_token")}'

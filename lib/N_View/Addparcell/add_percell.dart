@@ -640,19 +640,23 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
   }
 
   functionval()async{
-    var request = http.MultipartRequest("POST",uri);
     var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
     request.files.add(nid_cardd);
   }
   dun(){}
-  final uri = Uri.parse("${BaseUrl}/api/auth/parcel_store");
+
+  var request = http.MultipartRequest("POST", Uri.parse("${BaseUrl}/api/auth/parcel_store"));
+
+
+
+
+
   registerSeller() async {
 print("ffffffffffffffffffffffffffffff $division_id");
 print("ffffffffffffffffffffffffffffff $district_id");
 print("ffffffffffffffffffffffffffffff $upazilla_id");
 print("ffffffffffffffffffffffffffffff $selectedDatee");
     try{
-      var request = http.MultipartRequest("POST",uri);
       request.headers.addAll({
         "accept": "application/json",
         'Authorization': 'Bearer ${GetStorage().read("Api_token")}'

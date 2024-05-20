@@ -1,6 +1,8 @@
 import 'package:e_currier/N_CustomWidget/CustomText/custom_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../constant.dart';
+
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});
 
@@ -42,14 +44,14 @@ class _SupportScreenState extends State<SupportScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                   //   CustomText(text: "Ocado Customer", fontSize: 20, fontWeight: FontWeight.w700),
-                      CustomText(text: "Ecommerce Customer", fontSize: 20, fontWeight: FontWeight.w700),
+
+                      CustomText(text: "$login_headline", fontSize: 20, fontWeight: FontWeight.w700),
                       CustomText(text: "Care", fontSize: 20, fontWeight: FontWeight.w700),
                       Container(
                           height: 30,
                           margin: EdgeInsets.all(20),
-                          child: CustomText(text: "+8801332552444", fontSize: 25, fontWeight: FontWeight.w700)),
-                      CustomText(text: "support@ocadocourier.com", fontSize: 25, fontWeight: FontWeight.w700),
+                          child: CustomText(text: "$companyphon", fontSize: 25, fontWeight: FontWeight.w700)),
+                      CustomText(text: "$companyemail", fontSize: 25, fontWeight: FontWeight.w700),
                       SizedBox(height: 20,),
                       Container(
                         height: 85,

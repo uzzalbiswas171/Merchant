@@ -80,7 +80,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomText(text: "${GetStorage().read("GetProfile")['admin']["name"]}", fontSize: 15, fontWeight: FontWeight.w400),
+                          CustomText(text: "${GetStorage().read("GetProfile")["name"]?? GetStorage().read("GetProfile")['admin']["name"]}", fontSize: 15, fontWeight: FontWeight.w400),
                           CustomText(text: "${GetStorage().read("GetProfile")['balance']}TK BDT", fontSize: 13, fontWeight: FontWeight.w400),
 
                         ],
@@ -135,9 +135,9 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                                               alignment: Alignment.center,
                                               decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Colors.white
+                          color: redColor
                                               ),
-                            child: CustomText(text: "Create Parcel", fontSize: 16, fontWeight: FontWeight.w800,color: appbarColor,),
+                            child: CustomText(text: "Create Parcel", fontSize: 16, fontWeight: FontWeight.w800,color: Colors.white,),
 
                                             ),
                         ))

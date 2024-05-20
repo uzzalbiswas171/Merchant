@@ -54,14 +54,11 @@ class _SplashScreenState extends State<SplashScreen> {
               image: DecorationImage(image: AssetImage("${custom_image}"),fit: BoxFit.fill)
           )
         ),
-
             SizedBox(height: MediaQuery.of(context).size.height/9,),
             Image.asset("assets/zSo.gif",height: 60,width: 60,)
          ]
         ),
       )
-
-
     );
   }
 }

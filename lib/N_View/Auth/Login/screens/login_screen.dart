@@ -193,8 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Response response=await http.post(Uri.parse("$login_link"),headers: headers);
       final data=jsonDecode(response.body);
       GetStorage().write("Api_token","${data["api_token"]}");
-      print(data);
-      print("api tokennnnnnnnnnnnnnnnnnnnnnnnnnn >>>>> ${GetStorage().read("Api_token")}");
+      GetStorage().write("GetProfile", data["user"]);
       if(response.statusCode==200 && data["message"]=="Login successfully"){
         showDialog(
             barrierDismissible: false,

@@ -13,14 +13,7 @@ const defaultBackgroundColor = Color(0xffe5e3df);
 const figma_white = Color(0xffFFFFFF);
 const TextFieldColor = Color(0xffF2F2F2);
 
-/// Ocado Courier Base URL -------------------------///
-//const BaseUrl="http://ocadocourier.com";
 
-/// E----Courier----BaseURL -------------------------///
-// const BaseUrl="https://btiibd.com";
-
- 
- const custom_text="Ocado Courier xyz";
 /// //////////////////// For new App ////////////////////////////////////////
  // # Need to change Splash Screen
  // # Need to Change Icon inside Android res file
@@ -33,10 +26,14 @@ const TextFieldColor = Color(0xffF2F2F2);
 
 
 ///  for Ecommerce Courier
-// const BaseUrl="https://btiibd.com";
-// const custom_image="assets/Drawerimage/ecommerceshopicon.png";
-// const customredcolor=Color(0xff006637);
-// const login_headline="Ecommerce Courier";
+const custom_text="$login_headline";
+const BaseUrl="https://ecommercecourier.com";
+const custom_image="assets/Drawerimage/e_courier.png";
+const customredcolor=Color(0xff006637);
+const login_headline="Ecommerce Courier";
+const companyemail="ecourier@gmail.com";
+const companyphon="01889173335";
+
 
 /// for ocado softzon
 // const BaseUrl="https://courier.softzone24.xyz";
@@ -45,8 +42,8 @@ const TextFieldColor = Color(0xffF2F2F2);
 //   const login_headline="Ocado Courier";
 
 
-/// for ocado Courier
-     const BaseUrl="https://ocadocourier.com";
-     const custom_image="assets/splashicon.png";
-     const customredcolor=Color(0xffE83330);
-     const login_headline="Ocado Courier";
+// /// for ocado Courier
+//      const BaseUrl="https://ocadocourier.com";
+//      const custom_image="assets/splashicon.png";
+//      const customredcolor=Color(0xffE83330);
+//      const login_headline="Ocado Courier";
