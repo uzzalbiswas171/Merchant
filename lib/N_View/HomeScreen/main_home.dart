@@ -37,7 +37,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
     final balenceHistory=  Provider.of<E_Currier_Provierd>(context).balenceHistory;
     List TotalOrdetlist=Provider.of<E_Currier_Provierd>(context).getTotalOrderList;
     final getdatewiseList=Provider.of<E_Currier_Provierd>(context).getdatewiseList;
-    print("asaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $getdatewiseList");
+ // print("profileeeeeeeeeeeeeeeeeeeeeeeee  ${GetStorage().read("GetProfile")}");
     return RefreshIndicator(
       onRefresh: () {
         return Future.delayed(Duration(seconds: 1),() {
@@ -81,8 +81,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomText(text: "${GetStorage().read("GetProfile")["name"]?? GetStorage().read("GetProfile")['admin']["name"]}", fontSize: 15, fontWeight: FontWeight.w400),
-                          CustomText(text: "${GetStorage().read("GetProfile")['balance']}TK BDT", fontSize: 13, fontWeight: FontWeight.w400),
-
+                          CustomText(text: "${GetStorage().read("GetProfile")['balance']??0}TK BDT", fontSize: 13, fontWeight: FontWeight.w400),
                         ],
                        ),
                       Spacer(),
@@ -95,13 +94,13 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
 Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScreen(),));
                             }, icon: Icon(Icons.notifications_rounded,size: 28,))
                           ),
-                          Positioned(
-                            right: 15,
-                              top: 10,
-                              child: CircleAvatar(
-                                radius: 6,
-                                backgroundColor: appbarColor,
-                          ))
+                          // Positioned(
+                          //   right: 15,
+                          //     top: 10,
+                          //     child: CircleAvatar(
+                          //       radius: 6,
+                          //       backgroundColor: appbarColor,
+                          // ))
                         ],
                       )
                     ],
@@ -120,7 +119,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(image: AssetImage('assets/banner2.png'),fit: BoxFit.fill)
+                        image: DecorationImage(image: AssetImage('$nanner'),fit: BoxFit.fill)
                       ),
                     ),
                     Positioned(
@@ -324,8 +323,8 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScre
                      children: [
                        Image(image: AssetImage("assets/orderprocessing.png"),fit: BoxFit.fill,height: 25,width: 25,),
                        SizedBox(width: 10,),
-                       CustomText(text: "Process Parcel Amount", fontSize: 18, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF)),
-                       CustomText(text:"${balenceHistory}"=="null"?"0": " ৳ ${balenceHistory["payable_deliveryCharge"]}", fontSize: 17, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF) ),
+                       CustomText(text: "Process Amount", fontSize: 18, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF)),
+                       CustomText(text:"${balenceHistory}"=="null"?"0": " ৳ ${balenceHistory["process_amount"]}", fontSize: 17, fontWeight: FontWeight.w600,color:Color(0xffFFFFFF) ),
                      ],
                    ),
                  ),

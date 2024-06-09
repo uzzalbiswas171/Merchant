@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:spelling_number/spelling_number.dart';
 
@@ -76,9 +78,8 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                             size: 60.0,
                           ),
                         ],
-                      )),
-
-
+                      )
+                      ),
                       Expanded(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -165,6 +166,19 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                           child: Center(child: CustomText(text:  "${widget.map["parcel"]["delivery_charge"]}", fontSize: 15, fontWeight: FontWeight.bold)),
                         ),
                         ]),
+
+                        TableRow(children :[
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Center(child: CustomText(text: "Cod Charge", fontSize: 15, fontWeight: FontWeight.bold)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Center(child:
+                           CustomText(text: "${double.parse("${double.parse("${widget.map["parcel"]["cash"]}")*(double.parse("${double.parse("${GetStorage().read("GetProfile")["cod_charge"]?? GetStorage().read("GetProfile")['admin']["cod_charge"]??"0"}")}")/100)}").toStringAsFixed(0)}", fontSize: 15, fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        ]),
                         TableRow(children :[
                         Padding(
                           padding: const EdgeInsets.all(5.0),
@@ -172,19 +186,22 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(5.0),
-                          child: Center(child: CustomText(text: "${double.parse("${widget.map["parcel"]["delivery_charge"]}")+double.parse("${widget.map["parcel"]["cash"]}")}", fontSize: 15, fontWeight: FontWeight.bold)),
-                        ),
+                          child: Center(child: CustomText(text: "${double.parse("${widget.map["parcel"]["cash"]}")-double.parse("${widget.map["parcel"]["delivery_charge"]}")- double.parse("${double.parse("${widget.map["parcel"]["cash"]}")*(double.parse("${double.parse("${GetStorage().read("GetProfile")["cod_charge"]?? GetStorage().read("GetProfile")['admin']["cod_charge"]??"0"}")}")/100)}")}", fontSize: 15, fontWeight: FontWeight.bold)),
+                          ),
                         ]),
                       ]
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 20,left: 15,right: 15),
-                  child: CustomText(text: "In Word : ${SpellingNumber().convert(int.parse("${double.parse("${double.parse("${widget.map["parcel"]["delivery_charge"]}")+double.parse("${widget.map["parcel"]["cash"]}")}").toStringAsFixed(0)}"))} TAKA", fontSize: 18,maxLines: 2, fontWeight: FontWeight.w700,letterSpacing: 0.2),
+                  child: CustomText(text: "In Word : ${SpellingNumber().convert(int.parse("${double.parse("${double.parse("${widget.map["parcel"]["cash"]}")-double.parse("${widget.map["parcel"]["delivery_charge"]}")- double.parse("${double.parse("${widget.map["parcel"]["cash"]}")*(double.parse("${double.parse("${GetStorage().read("GetProfile")["cod_charge"]?? GetStorage().read("GetProfile")['admin']["cod_charge"]??"0"}")}")/100)}")}").toStringAsFixed(0)}"))} TAKA", fontSize: 18,maxLines: 2, fontWeight: FontWeight.w700,letterSpacing: 0.2),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 20,left: 15,right: 15),
-                  child: CustomText(text: "Note : ${widget.map["note"]}", fontSize: 18, fontWeight: FontWeight.w700,letterSpacing: 0.2),
+                  child:  Text( "Note : ${widget.map["note"]}",style: GoogleFonts.poppins(
+                      fontSize: 18, fontWeight: FontWeight.w700,letterSpacing: 0.2
+                  ),
+                     ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 20,left: 15,right: 15),

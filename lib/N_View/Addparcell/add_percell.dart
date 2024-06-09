@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:e_currier/N_Statemanagement/e_currier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -37,6 +38,12 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
   final sell =TextEditingController();
   final delivery_charge =TextEditingController();
   final instruction =TextEditingController();
+
+
+
+
+  final hcontroller =TextEditingController();
+  final mcontroller =TextEditingController();
 
 
   final date =TextEditingController();
@@ -81,10 +88,13 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
     List planlist = Provider.of<E_Currier_Provierd>(context).divisionList;
     List pickareaList = Provider.of<E_Currier_Provierd>(context).districtList;
     List transectionlist = Provider.of<E_Currier_Provierd>(context).thanalist;
-    print("plan_list         ${plan_list}");
-    print("Division         ${planlist}");
-    print("BBBBBBBBBBBBBBBBBBB ${pickareaList}");
-    print("BBBBBBBBBBBBBBBBBBB ${pickareaList}");
+    // print("plan_list         ${plan_list}");
+    // print("Division         ${planlist}");
+    // print("BBBBBBBBBBBBBBBBBBB ${pickareaList}");
+    // print("BBBBBBBBBBBBBBBBBBB ${pickareaList}");
+
+    // hcontroller.text="${DateTime.now().hour}";
+    // mcontroller.text="${DateTime.now().minute}";
     return Scaffold(
         body:Container(
 
@@ -387,11 +397,36 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                                   child: CustomText(text: "Instruction", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
                               Expanded(
                                 flex: 3,
-                                child: CustomTextFormFieldd(
-                                  readOnly: false,
-                                  maxline: 1, height: 38, hintext: "", controller:instruction , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
+                                child: Container(
+                                  height:38,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
+                                    color: TextFieldColor,
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: TextField(
+                                    // final TextEditingController? controller;
+                                    controller: instruction,
+                                    decoration: InputDecoration(
+                                      hintStyle: GoogleFonts.urbanist(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                          letterSpacing: 0.2
+                                      ),
+                                      border: InputBorder.none,
+                                      errorStyle: TextStyle(
+                                        fontSize: 0.1,
+                                      ),
+                                      contentPadding: EdgeInsets.only(left:5,right: 0,top: 0,bottom: 7),
 
-                                },),
+                                    ),
+                                  ),
+                                ),
+                                // child: CustomTextFormFieldd(
+                                //   readOnly: false,
+                                //   maxline: 1, height: 38, hintext: "", controller:instruction , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
+                                //
+                                // },),
                               )
                             ],
                           ),
@@ -399,6 +434,7 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                          // CustomTextfieldForm(name: "date", obscureText: false,controller: date),
                      //   CustomTextfieldForm(name: "status", obscureText: false,controller: status,keyboardType: TextInputType.number),
                       //  CustomTextfieldForm(name: "admin_id", obscureText: false,controller: admin_id),
+                        
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -410,6 +446,109 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                             _selectDate(context);
                           }, child: CustomText(text: selectedDatee==null?'Select Date' : "${selectedDatee}", fontSize: 16, fontWeight: FontWeight.bold,color: customredcolor))
 
+                        ),
+                        SizedBox(height: 15,),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                         color: TextFieldColor
+                            // color: Colors.red
+                          ),
+                          height: 50,
+                          width: double.infinity,
+                         
+                          child:   Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("  Pickup ",style: GoogleFonts.poppins(color: redColor,letterSpacing: 0.2,fontSize: 16,fontWeight: FontWeight.bold),),
+                              Spacer(),
+                              Container(
+                                height: 40,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9),
+                                  color: Colors.white,
+                                ),
+                                child: TextField(
+                                  controller: hcontroller,
+                                  style: TextStyle(
+                                      fontSize: 16,fontWeight: FontWeight.bold
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(left: 10,bottom: 5),
+                                    hintStyle: TextStyle(
+                                      fontSize: 16,fontWeight: FontWeight.bold
+                                    ),
+                                    hintText: "- -"
+                                  ),
+                                ),
+                              ),
+                              Text(":",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                              Container(
+                                height: 40,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9),
+                                  color: Colors.white,
+                                ),
+                                child: TextField(
+                                  controller: mcontroller,
+                                  style: TextStyle(
+                                      fontSize: 16,fontWeight: FontWeight.bold
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(left: 10,bottom: 5),
+                                    hintStyle: TextStyle(
+                                      fontSize: 16,fontWeight: FontWeight.bold
+                                    ),
+                                    hintText: "- -"
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: 50,
+                                  width: double.infinity,
+                                  //  padding: EdgeInsets.only(left: 15, right: 15),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(11),
+                                      border: Border.all(color:Colors.white,width: 2),
+                                      color: Colors.white
+                                  ),
+                                  child: IgnorePointer(
+                                    ignoring: false,
+                                    child: DropdownButton(
+                                      enableFeedback: true,
+                                      autofocus: false,
+                                      isExpanded: true,
+                                      hint: InkWell(
+                                          onTap: () {}, child: Text('PM',style: TextStyle(
+                                        color: customredcolor,
+                                      ))),
+                                      // Not necessary for Option 1
+                                      value: pm,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          pm = newValue.toString();
+                                        });
+                                      },
+                                      items:pml.map((location) {
+                                        return DropdownMenuItem(
+                                          child: Text(location),
+                                          value: location,
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+
+                            ],
+                          )
                         ),
                         Container(
                           child: Column(
@@ -439,11 +578,17 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                                     value: division_id,
                                     onChanged: (newValue) {
                                       setState(() {
+                                        district=false;
+                                        subdistrict=false;
                                         district_id=null;
-                                        upazilla_id=null;
+                                         upazilla_id=null;
                                         division_id = newValue.toString();
                                         Provider.of<E_Currier_Provierd>(context,listen: false).districtProvider("/api/district?division_id=${division_id}", context, true);
-
+                                        Future.delayed(Duration(seconds: 1),() {
+                                            setState(() {
+                                              district=true;
+                                            });
+                                        },);
                                       });
                                     },
                                     items:planlist.map((location) {
@@ -461,7 +606,7 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                                 ),
                               ),
                               /// District
-                              Container(
+                              district==false?Container():   Container(
                                 margin: EdgeInsets.only(top: 10),
                                 height: 50,
                                 width: double.infinity,
@@ -485,11 +630,15 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                                     value: district_id,
                                     onChanged: (newValue) {
                                       setState(() {
+                                        subdistrict=false;
                                         upazilla_id=null;
                                         district_id = newValue.toString();
                                         Provider.of<E_Currier_Provierd>(context,listen: false).thanaProvider("/api/upazilla?district_id=${district_id}", context, true);
-
-
+                                        Future.delayed(Duration(seconds: 1),() {
+                                          setState(() {
+                                            subdistrict=true;
+                                          });
+                                        },);
                                       });
                                     },
                                     items:pickareaList.map((location) {
@@ -507,7 +656,7 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                                 ),
                               ),
                               /// Thana
-                              Container(
+                              subdistrict==false?Container():   Container(
                                 margin: EdgeInsets.only(top: 10),
                                 height: 50,
                                 width: double.infinity,
@@ -583,10 +732,29 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
                               is_clicked_register==true?CircularProgressIndicator(
 
                               ):    CustomButton(onTap: () {
-                                if(_formkey.currentState!.validate() && percel_id!=null && categoryid!=null){
-                                  registerSeller();
-                                  district_id=null;
-                                  upazilla_id=null;
+                                if(
+                                _formkey.currentState!.validate()
+                                    &&
+                                    percel_id!=null
+                                    &&
+                                    categoryid!=null
+                                    &&
+                                    district_id!=null
+                                    &&
+                                    division_id !=null
+                                    &&
+                                    upazilla_id !=null
+                                    &&
+                                    mcontroller.text.isNotEmpty
+                                    &&
+                                    hcontroller.text.isNotEmpty
+                                ){
+
+
+
+                                registerSeller();
+                                  district=false;
+                                  subdistrict=false;
                                   setState(() {
                                     is_clicked_register=true;
                                   });
@@ -614,13 +782,21 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
         )
     );
   }
+
+
   bool is_clicked_register=false;
 
+  bool district=false;
+  bool subdistrict=false;
+
   String? percel_id ;
+  String? pm ="PM";
+  List pml=["PM","AM"];
+
   String? categoryid  ;
   String? division_id  ;
-  String? district_id  ;
-  String? upazilla_id  ;
+  String? district_id ="Select District" ;
+  String? upazilla_id ="Select UpZila" ;
 
 
   List percel_list=["Fragile","Liquid", "Package"];
@@ -639,6 +815,8 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
     }
   }
 
+
+
   functionval()async{
     var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
     request.files.add(nid_cardd);
@@ -652,23 +830,12 @@ class _AddPercellScreenState extends State<AddPercellScreen> {
 
 
   registerSeller() async {
-print("ffffffffffffffffffffffffffffff $division_id");
-print("ffffffffffffffffffffffffffffff $district_id");
-print("ffffffffffffffffffffffffffffff $upazilla_id");
-print("ffffffffffffffffffffffffffffff $selectedDatee");
     try{
       request.headers.addAll({
         "accept": "application/json",
         'Authorization': 'Bearer ${GetStorage().read("Api_token")}'
       });
-      showDialog(
-        barrierDismissible: false,
-        context: context, builder: (context) =>const AlertDialog(
-          title: Text("Parcel Add Processing"),actions: [
-        Center(
-          child: CircularProgressIndicator(),
-        )
-      ]),);
+
       request.fields['customer_name'] = customer_name.text.toString();
       request.fields['customer_phone'] = customer_phone.text.toString();
       request.fields['customer_address'] = customer_address.text.toString();
@@ -676,9 +843,10 @@ print("ffffffffffffffffffffffffffffff $selectedDatee");
       request.fields['parcel_area'] = parcel_area.text.toString();
       request.fields['parcel_type'] = percel_id=="Fragile"?"0":"1";
       request.fields['category_id'] = categoryid.toString();
+      request.fields['sell'] = sell.text.toString();
       // request.fields['quantity'] = quantity.text.toString();
       request.fields['cash'] = cash.text.toString();
-      request.fields['sell'] = sell.text.toString();
+      request.fields['pickup_time'] = "${hcontroller.text}:${mcontroller.text} ${pm}";
       request.fields['delivery_charge'] = "";
       request.fields['instruction'] = instruction.text.toString();
       request.fields['division_id'] = division_id.toString();
@@ -692,19 +860,33 @@ print("ffffffffffffffffffffffffffffff $selectedDatee");
       var response = await request.send();
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);
-      print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.stream}");
-      print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.statusCode}");
-      if(response.statusCode==200){
-       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+   //   print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${responseString}");
+     print("Response  status copde ${response.statusCode}");
+     print("Response  status copde ${response.request}");
+      var  data = jsonDecode(responseString);
+      print("cccccccccccccccccc ${data}" );
+      if(response.statusCode==200 && "${data["msg"]}" != "Parcel Not Added Your Id Not Active Please Contact With Admin"){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            duration:  Duration(milliseconds: 500),
+            content: Text("Parcel Create Successful")));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+
       }else{
+        Flushbar(
+          flushbarPosition: FlushbarPosition.TOP,
+          title:  "${data["msg"]}",
+          message:  "Please Wait ...",
+          duration:  Duration(seconds: 5),
+        )..show(context);
         setState(() {
           is_clicked_register=false;
         });
+
       }
-      var  data = jsonDecode(responseString);
+
       if(data["message"]=="The given data was invalid."){
         setState(() {
-          Navigator.pop(context);
+       //  Navigator.pop(context);
           setState(() {
             is_clicked_register=false;
           });
@@ -713,17 +895,22 @@ print("ffffffffffffffffffffffffffffff $selectedDatee");
           flushbarPosition: FlushbarPosition.TOP,
           title:  "${data["message"]}",
           message:  "Please Wait ...",
-          duration:  Duration(seconds: 1),
+          duration:  Duration(seconds: 2),
         )..show(context);
       }else{
 
       }
-      print("=====Parcel=========>$data");
+    //  print("=====Parcel=========>$data");
     }catch(erroe){
-
       setState(() {
-        Navigator.pop(context);
+         Navigator.pop(context);
         is_clicked_register=false;
+         Flushbar(
+           flushbarPosition: FlushbarPosition.TOP,
+           title:  "Try again leter ...",
+           message:  "Server error",
+           duration:  Duration(seconds: 2),
+         )..show(context);
       });
       print("Catch Error $erroe");
     }

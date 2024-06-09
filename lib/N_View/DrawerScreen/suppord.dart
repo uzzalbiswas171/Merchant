@@ -70,8 +70,8 @@ class _SupportScreenState extends State<SupportScreen> {
                     ],
                   ),
                 ),
-              ))
-
+              ),
+              )
     ]
     )
       )

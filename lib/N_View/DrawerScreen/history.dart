@@ -1,4 +1,4 @@
-import 'package:e_currier/N_CustomWidget/CustomText/custom_text.dart';
+﻿import 'package:e_currier/N_CustomWidget/CustomText/custom_text.dart';
 import 'package:e_currier/N_CustomWidget/custom_text_formfield.dart';
 import 'package:e_currier/N_Statemanagement/e_currier_provider.dart';
 import 'package:e_currier/constant.dart';
@@ -40,7 +40,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
      return total_order_history;
     }
 
-    print("aaaaaaaaaaaaaaaaaaaaaaaaa ============= ${total_order_history}");
+   print("aaaaaaaaaaaaaaaaaaaaaaaaa ============= ${total_order_history}");
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -105,7 +105,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                       ),
                     ),
                     alignment: Alignment.center,
-                    child: CustomText(text: "${statuslist[index]}", fontSize: 18, fontWeight: FontWeight.w500,letterSpacing: 0.2,),
+                    child: CustomText(text: "${statuslist[index]}", fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,),
                   ),
                 );
               },),
@@ -159,8 +159,8 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
              child: Row(
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
-                 CustomText(text: "Total", fontSize: 20, fontWeight: FontWeight.w700,letterSpacing: 0.2,),
-                 CustomText(text:selected_index==0? "${total_order_history.length??"0"} Orders": "${listA.length} Orders", fontSize: 18, fontWeight: FontWeight.w400,letterSpacing: 0.2,color: Color(0xff404042),)
+                 CustomText(text: "Total", fontSize: 16, fontWeight: FontWeight.w700,letterSpacing: 0.2,),
+                 CustomText(text:selected_index==0? "${total_order_history.length??"0"} Orders": "${listA.length} Orders", fontSize: 16, fontWeight: FontWeight.w400,letterSpacing: 0.2,color: Color(0xff404042),)
                ],
              ),
             ),
@@ -177,7 +177,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                     mainAxisExtent: 150),
                   itemBuilder: (context, index) {
                   return  Container(
-                      height: 153,
+                     // height: 160,
                       width: double.infinity,
                       margin: EdgeInsets.only(
                         left: 15,right: 15,
@@ -198,7 +198,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width:selected_index==2 || selected_index==3?105: 183,
+                              width:selected_index==2 || selected_index==3 || selected_index==0?105: 183,
                               height: 30,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
@@ -209,19 +209,19 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                 color:selected_index==1?Color(0xffCFCA58) :selected_index==2?Color(0xff5ACF58):selected_index==3 ?Color(0xff8A9CC9):Color(0xff58CFC8)
                               ),
                               child:
-                              selected_index==1? CustomText(text: "Pick Up Request" , fontSize: 18, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
+                              selected_index==1? CustomText(text: "Pick Up Request" , fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
                                   :
-                              selected_index==2? CustomText(text: "Delivered"  , fontSize: 18, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
+                              selected_index==2? CustomText(text: "Delivered"  , fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
                                   :
-                              selected_index==3? CustomText(text: "Return" , fontSize: 18, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
+                              selected_index==3? CustomText(text: "Return" , fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
                                   :
                               "${searchlist.toString()}"!="[]"?
 
-                              CustomText(text:searchlist[index]["status"]==0?"Active":searchlist[index]["status"]==1?"Cancel":searchlist[index]["status"]==2?"Sent To Agent":searchlist[index]["status"]==3?"Send to Hub":searchlist[index]["status"]==4?"Sent To Receiver":searchlist[index]["status"]==5?"Receive By Receiver":searchlist[index]["status"]==6?"Send DeliveryMan":searchlist[index]["status"]==7?"Deliver":searchlist[index]["status"]==8?"Not Delivered":searchlist[index]["status"]==9?"Return":searchlist[index]["status"]==10?"Received by Agent":searchlist[index]["status"]==11?"Pending":searchlist[index]["status"]==12?"Re-With-Del-Charge":searchlist[index]["status"]==13?"ReSchedule":searchlist[index]["status"]==14?"Hold On":searchlist[index]["status"]==15?"In Transit":searchlist[index]["status"]==16?"Received deliveryman":"status 17", fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
+                              CustomText(text:searchlist[index]["status"]==0?"Active":searchlist[index]["status"]==1?"Cancel":searchlist[index]["status"]==2?"Sent To Agent":searchlist[index]["status"]==3?"Send to Hub":searchlist[index]["status"]==4?"Sent To Receiver":searchlist[index]["status"]==5?"Receive By Receiver":searchlist[index]["status"]==6?"Send DeliveryMan":searchlist[index]["status"]==7?"Delivered":searchlist[index]["status"]==8?"Not Delivered":searchlist[index]["status"]==9?"Return":searchlist[index]["status"]==10?"Received by Agent":searchlist[index]["status"]==11?"Pending":searchlist[index]["status"]==12?"Re-With-Del-Charge":searchlist[index]["status"]==13?"ReSchedule":searchlist[index]["status"]==14?"Hold On":searchlist[index]["status"]==15?"In Transit":searchlist[index]["status"]==16?"Received deliveryman":"status 17", fontSize: 14, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
                               :
-                              CustomText(text:total_order_history[index]["status"]==0?"Active":total_order_history[index]["status"]==1?"Cancel":total_order_history[index]["status"]==2?"Sent To Agent":total_order_history[index]["status"]==3?"Send to Hub":total_order_history[index]["status"]==4?"Sent To Receiver":total_order_history[index]["status"]==5?"Receive By Receiver":total_order_history[index]["status"]==6?"Send DeliveryMan":total_order_history[index]["status"]==7?"Deliver":total_order_history[index]["status"]==8?"Not Delivered":total_order_history[index]["status"]==9?"Return":total_order_history[index]["status"]==10?"Received by Agent":total_order_history[index]["status"]==11?"Pending":total_order_history[index]["status"]==12?"Re-With-Del-Charge":total_order_history[index]["status"]==13?"ReSchedule":total_order_history[index]["status"]==14?"Hold On":total_order_history[index]["status"]==15?"In Transit":total_order_history[index]["status"]==16?"Received deliveryman":"status 17", fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
+                              CustomText(text:total_order_history[index]["status"]==0?"Active":total_order_history[index]["status"]==1?"Cancel":total_order_history[index]["status"]==2?"Sent To Agent":total_order_history[index]["status"]==3?"Send to Hub":total_order_history[index]["status"]==4?"Sent To Receiver":total_order_history[index]["status"]==5?"Receive By Receiver":total_order_history[index]["status"]==6?"Send DeliveryMan":total_order_history[index]["status"]==7?"Delivered":total_order_history[index]["status"]==8?"Not Delivered":total_order_history[index]["status"]==9?"Return":total_order_history[index]["status"]==10?"Received by Agent":total_order_history[index]["status"]==11?"Pending":total_order_history[index]["status"]==12?"Re-With-Del-Charge":total_order_history[index]["status"]==13?"ReSchedule":total_order_history[index]["status"]==14?"Hold On":total_order_history[index]["status"]==15?"In Transit":total_order_history[index]["status"]==16?"Received deliveryman":"status 17", fontSize: 14, fontWeight: FontWeight.w500,letterSpacing: 0.2,)
                             ),
-                            selected_index==2?   Container(
+                            selected_index==2 ||  selected_index==0 ?   Container(
                               margin: EdgeInsets.only(left: 10),
                               height: 30,
                               width: 66,
@@ -233,12 +233,12 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                 )
                               ),
                               alignment: Alignment.center,
-                              child: CustomText(text: "Paid", fontSize: 16, fontWeight: FontWeight.w500),
+                              child: CustomText(text:total_order_history[index]["status"]==7? "Paid" : "UnPaid", fontSize: 14, fontWeight: FontWeight.w500),
                             ):Container(),
                             Expanded(
                                 child: Align(
                                     alignment: Alignment.centerRight,
-                                    child: CustomText(text:"${searchlist.toString()}"!="[]"? "Date: ${searchlist[index]["date"]}": "Date: ${total_order_history[index]["date"]}", fontSize: 16, fontWeight: FontWeight.w500,letterSpacing: 0.2,)))
+                                    child: CustomText(text:"${searchlist.toString()}"!="[]"? "Date: ${searchlist[index]["date"]}": "Date: ${total_order_history[index]["date"]}", fontSize: 14, fontWeight: FontWeight.w500,letterSpacing: 0.2,)))
                           ],
                         ),
                       ),
@@ -256,7 +256,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                     children: [
-                                    CustomText(text:"${searchlist.toString()}"!="[]"? "${searchlist[index]["customer_name"]}": "${total_order_history[index]["customer_name"]}", fontSize: 17, fontWeight: FontWeight.w600,letterSpacing: 0.2,),
+                                    CustomText(text:"${searchlist.toString()}"!="[]"? "${searchlist[index]["customer_name"]}": "${total_order_history[index]["customer_name"]}", fontSize: 15, fontWeight: FontWeight.w600,letterSpacing: 0.2,),
                                     Container(
                                       height: 28,
                                       child: Row(
@@ -265,13 +265,15 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.only(top:5),
-                                            child: CustomText(text:"${searchlist.toString()}"!="[]"? "Order ID: OC-${searchlist[index]["id"]}": "Order ID: OC-${total_order_history[index]["id"]}", fontSize: 14, fontWeight: FontWeight.w300,letterSpacing: 0.2,),
+                                            child: CustomText(text:"${searchlist.toString()}"!="[]"? "Order ID: OC-2024${searchlist[index]["id"]}": "Order ID: OC-2024${total_order_history[index]["id"]}", fontSize: 14, fontWeight: FontWeight.w300,letterSpacing: 0.2,),
                                           ),
                                           IconButton(onPressed: () {
-                                            Clipboard.setData(new ClipboardData(text:"${searchlist.toString()}"!="[]"? "OC-${searchlist[index]["id"]}": "OC-${total_order_history[index]["id"]}"));
+                                            Clipboard.setData(new ClipboardData(text:"${searchlist.toString()}"!="[]"? "OC-2024${searchlist[index]["id"]}": "OC-2024${total_order_history[index]["id"]}"));
                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                new SnackBar(content: new Text("Copied to Clipboard"),));
-                                          }, icon: Icon(Icons.copy,size: 18,color: Colors.grey,))
+                                                new SnackBar(
+                                                  duration: Duration(milliseconds: 50),
+                                                  content: new Text("Copied to Clipboard"),));
+                                          }, icon: Icon(Icons.copy,size: 14,color: Colors.grey,))
                                         ],
                                       ),
                                     ),
@@ -292,7 +294,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           Image(image:AssetImage("assets/Drawerimage/phone 3.png"),height: 20,width: 20,fit: BoxFit.fill,),
-                                          CustomText(text:"${searchlist.toString()}"!="[]"?"${searchlist[index]["customer_phone"]}": "${total_order_history[index]["customer_phone"]}", fontSize: 16, fontWeight: FontWeight.w500),
+                                          CustomText(text:"${searchlist.toString()}"!="[]"?"${searchlist[index]["customer_phone"]}": "${total_order_history[index]["customer_phone"]}", fontSize: 14, fontWeight: FontWeight.w500),
                                         ],
                                       )),
                                   Container(
@@ -300,25 +302,34 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                             CustomText(text: "Total : ", fontSize: 16, fontWeight: FontWeight.w500,color: customredcolor,),
-                                             CustomText(text:"${searchlist.toString()}"!="[]"?"৳${double.parse("${searchlist[index]["cash"]}").toStringAsFixed(0)}": "৳${double.parse("${total_order_history[index]["cash"]}").toStringAsFixed(0)}", fontSize: 16, fontWeight: FontWeight.w500)
+                                             CustomText(text: "Total : ", fontSize: 14, fontWeight: FontWeight.w500,color: customredcolor,),
+                                             CustomText(text:"${searchlist.toString()}"!="[]"?"৳${double.parse("${searchlist[index]["cash"]}").toStringAsFixed(0)}": "৳${double.parse("${total_order_history[index]["cash"]}").toStringAsFixed(0)}", fontSize: 14, fontWeight: FontWeight.w500)
                                         ],
                                       )),
-                                  Container(
-                                      height: 25,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                             CustomText(text: "Delivery C : ", fontSize: 13, fontWeight: FontWeight.w500,color: customredcolor,),
-                                             CustomText(text:"${searchlist.toString()}"!="[]"? "৳${double.parse("${searchlist[index]["delivery_charge"]}").toStringAsFixed(0)}":  "৳${double.parse("${total_order_history[index]["delivery_charge"]}").toStringAsFixed(0)}", fontSize: 13, fontWeight: FontWeight.w500)
-                                        ],
-                                      )),
+                                  // Container(
+                                  //     height: 25,
+                                  //     child: Row(
+                                  //       mainAxisAlignment: MainAxisAlignment.end,
+                                  //       children: [
+                                  //            CustomText(text: "Delivery C : ", fontSize: 13, fontWeight: FontWeight.w500,color: customredcolor,),
+                                  //            CustomText(text:"${searchlist.toString()}"!="[]"? "৳${double.parse("${searchlist[index]["delivery_charge"]}").toStringAsFixed(0)}":  "৳${double.parse("${total_order_history[index]["delivery_charge"]}").toStringAsFixed(0)}", fontSize: 13, fontWeight: FontWeight.w500)
+                                  //       ],
+                                  //     )),
+
                                 ],
                               ))
                             ],
                           ),
                         ),
-                      )
+                      ),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text( "Parcel Area : ${total_order_history[index]["parcel_area"]}"),
+                          )),
+                      SizedBox(height: 5,),
+
                     ],
                   )
                     );
@@ -391,7 +402,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                 )
                               ),
                               alignment: Alignment.center,
-                              child: CustomText(text: "Paid", fontSize: 17, fontWeight: FontWeight.w500),
+                              child: CustomText(text: "Paid", fontSize: 15, fontWeight: FontWeight.w500),
                             ):Container(),
                             Expanded(
                                 child: Align(
@@ -423,17 +434,19 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.only(top:5),
-                                            child: CustomText(text: "Order ID: OC-${listA[index]["id"]}", fontSize: 16, fontWeight: FontWeight.w300,letterSpacing: 0.2,),
+                                            child: CustomText(text: "Order ID: OC-2024${listA[index]["id"]}", fontSize: 14, fontWeight: FontWeight.w300,letterSpacing: 0.2,),
                                           ),
                                           IconButton(onPressed: () {
-                                            Clipboard.setData(new ClipboardData(text: "OC-${listA[index]["id"]}"));
+                                            Clipboard.setData(new ClipboardData(text: "OC-2024${listA[index]["id"]}"));
                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                new SnackBar(content: new Text("Copied to Clipboard"),));
-                                          }, icon: Icon(Icons.copy,size: 18,color: Colors.grey,))
+                                                new SnackBar(
+                                                  duration: Duration(milliseconds: 50),
+                                                  content: new Text("Copied to Clipboard"),));
+                                          }, icon: Icon(Icons.copy,size: 16,color: Colors.grey,))
                                         ],
                                       ),
                                     ),
-                                    CustomText(text: "Merchant ID: OC-${listA[index]["admin_id"]}", fontSize: 16, fontWeight: FontWeight.w400,letterSpacing: 0.2,),
+                                    CustomText(text: "Merchant ID: OC-${listA[index]["admin_id"]}", fontSize: 14, fontWeight: FontWeight.w400,letterSpacing: 0.2,),
 
                                                                     ],
                                                                   ),
@@ -450,7 +463,7 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           Image(image:AssetImage("assets/Drawerimage/phone 3.png"),height: 20,width: 20,fit: BoxFit.fill,),
-                                          CustomText(text: "${listA[index]["customer_phone"]}", fontSize: 16, fontWeight: FontWeight.w500),
+                                          CustomText(text: "${listA[index]["customer_phone"]}", fontSize: 14, fontWeight: FontWeight.w500),
                                         ],
                                       )),
                                   Container(
@@ -458,25 +471,29 @@ class _DrawerHistoryScreenState extends State<DrawerHistoryScreen> {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                          CustomText(text: "Total : ", fontSize: 16, fontWeight: FontWeight.w500,color: customredcolor,),
-                                          CustomText(text: "৳${double.parse("${listA[index]["cash"]}").toStringAsFixed(0)}", fontSize: 18, fontWeight: FontWeight.w500)
+                                          CustomText(text: "Total : ", fontSize: 14, fontWeight: FontWeight.w500,color: customredcolor,),
+                                          CustomText(text: "৳${double.parse("${listA[index]["cash"]}").toStringAsFixed(0)}", fontSize: 16, fontWeight: FontWeight.w500)
                                         ],
                                       )),
-                                  Container(
-                                      height: 25,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          CustomText(text: "Delivery C : ", fontSize: 13, fontWeight: FontWeight.w500,color: customredcolor,),
-                                          CustomText(text: "৳${double.parse("${listA[index]["delivery_charge"]}").toStringAsFixed(0)}", fontSize: 13, fontWeight: FontWeight.w500)
-                                        ],
-                                      )),
+                                  // Container(
+                                  //     height: 25,
+                                  //     child: Row(
+                                  //       mainAxisAlignment: MainAxisAlignment.end,
+                                  //       children: [
+                                  //         CustomText(text: "Delivery C : ", fontSize: 13, fontWeight: FontWeight.w500,color: customredcolor,),
+                                  //         CustomText(text: "৳${double.parse("${listA[index]["delivery_charge"]}").toStringAsFixed(0)}", fontSize: 13, fontWeight: FontWeight.w500)
+                                  //       ],
+                                  //     )),
                                 ],
                               ))
                             ],
                           ),
                         ),
-                      )
+                      ),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text( "Parcel Area : ${total_order_history[index]["parcel_area"] ??""}")),
+                      SizedBox(height: 5,),
                     ],
                   )
                     );

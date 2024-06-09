@@ -25,8 +25,9 @@ class CustomHttp{
     String url="${BaseUrl}/api/auth/merchant_profile";
     try{
       Response response=await http.get(Uri.parse(url),headers: CustomHttp().headers);
-
+      print("profillllllllllllllllllll ${response.body}");
       var decodedata=jsonDecode(response.body);
+
       if(response.statusCode==200){
         GetStorage().write("GetProfile", decodedata);
         is_getprofile=true;
@@ -35,7 +36,7 @@ class CustomHttp{
       //  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
       }
     }catch(e){
-      GetStorage().erase();
+     // GetStorage().erase();
       print("Peg profile catch error $e");
     }
       return is_getprofile;
@@ -234,7 +235,7 @@ dynamic parceltracklist ;
     //   String link="${BaseUrl}/api/traceparcel?request_trace_id=OC-20246";
     try{
       Response response=await http.get(Uri.parse(link),headers: headers);
-      print("xxxxxxxxxxxxxxxxxx ${response.body}");
+   //   print("xxxxxxxxxxxxxxxxxx ${response.body}");
       parceltracklist=jsonDecode(response.body);
     }catch(e){
       print("Catch error is parceltracklist============ > $e");

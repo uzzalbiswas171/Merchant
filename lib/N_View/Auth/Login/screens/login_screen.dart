@@ -195,19 +195,21 @@ class _LoginScreenState extends State<LoginScreen> {
       GetStorage().write("Api_token","${data["api_token"]}");
       GetStorage().write("GetProfile", data["user"]);
       if(response.statusCode==200 && data["message"]=="Login successfully"){
-        showDialog(
-            barrierDismissible: false,
-            context: context, builder: (context) => AlertDialog(
-          title: CustomText(text: "Login Processing", fontSize: 18, fontWeight: FontWeight.bold),actions: [
-          Center(child: CircularProgressIndicator(
-          ),
-          )
-        ],
-        )
-        );
-        Future.delayed(Duration(milliseconds: 1500),() {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
-        },);
+        //   showDialog(
+        //     barrierDismissible: false,
+        //     context: context, builder: (context) => AlertDialog(
+        //   title: CustomText(text: "Login Successful", fontSize: 18, fontWeight: FontWeight.bold),actions: [
+        // ],
+        // )
+        // );
+      //  Future.delayed(Duration(milliseconds: 200),() {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                dismissDirection: DismissDirection.up,
+                duration: Duration(seconds: 1),
+                content: Text("Login Successful")));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+        //    },);
       }else{
         setState(() {
           is_clicked_loginbutton=false;

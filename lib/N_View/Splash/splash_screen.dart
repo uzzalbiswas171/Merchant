@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Provider.of<E_Currier_Provierd>(context,listen: false).getProfileProvider(context);
-      Future.delayed(Duration(seconds: 2),(){
+      Future.delayed(Duration(seconds: 3),(){
         if(GetStorage().read("Api_token") != null ){
           Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
         }
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
           )
         ),
             SizedBox(height: MediaQuery.of(context).size.height/9,),
-            Image.asset("assets/zSo.gif",height: 60,width: 60,)
+            Image.asset("assets/zSo.gif",height: 90,width: 90,)
          ]
         ),
       )

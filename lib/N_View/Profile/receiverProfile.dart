@@ -64,8 +64,8 @@ class _ReceiverProfileState extends State<ReceiverProfile> {
   }
   @override
   Widget build(BuildContext context) {
-print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile")}");
-print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile").runtimeType}");
+// print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile")}");
+// print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile").runtimeType}");
      return RefreshIndicator(
        onRefresh: () {
          return Future((){
@@ -407,7 +407,7 @@ print("sssssssssssssssssssssssss ${GetStorage().read("GetProfile").runtimeType}"
       var response = await request.send();
        var responseData = await response.stream.toBytes();
        var responseString = String.fromCharCodes(responseData);
-      print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.statusCode}");
+  //    print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.statusCode}");
       if(response.statusCode==200){
         Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
       }else{

@@ -15,26 +15,33 @@ class BalanchScreen extends StatefulWidget {
 
 class _BalanchScreenState extends State<BalanchScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     final balenceHistory=  Provider.of<E_Currier_Provierd>(context).balenceHistory;
-    return RefreshIndicator(
-      onRefresh: () {
-        return Future.delayed(Duration(seconds: 1),() {
-          Provider.of<E_Currier_Provierd>(context,listen: false).balenceHistoryProvider(context);
-        },);
-      },
-      child: Scaffold(
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(75), child: AppBar(
-          centerTitle: true,
-          leading: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Image(image: AssetImage("assets/back 2.png"),height: 30,width: 30,)),
-          title: CustomText(text: "Balance History", fontSize: 25, fontWeight: FontWeight.w800,letterSpacing: 0.2,),
-        )),
-        body: "${balenceHistory}"=="null"?Center(child: CircularProgressIndicator(),): Container(
+    return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(75), child: AppBar(
+        centerTitle: true,
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Image(image: AssetImage("assets/back 2.png"),height: 30,width: 30,)),
+        title: CustomText(text: "Balance History", fontSize: 25, fontWeight: FontWeight.w800,letterSpacing: 0.2,),
+      )),
+      body: "${balenceHistory}"=="null"?Center(child: CircularProgressIndicator(),):
+
+      RefreshIndicator(
+        onRefresh: () {
+          return Future.delayed(Duration(seconds: 1),() {
+            Provider.of<E_Currier_Provierd>(context,listen: false).balenceHistoryProvider(context);
+          },);
+        },
+        child: Container(
           height: double.infinity,
           width: double.infinity,
           child: Column(
@@ -214,11 +221,5 @@ class _BalanchScreenState extends State<BalanchScreen> {
     );
 
   }
-  String ? paymentMethod;
-  List paymentMethodList=[
-    "A",
-    "B",
-    "C"
-  ];
-  bool is_payment_button_clicked=false;
+
 }

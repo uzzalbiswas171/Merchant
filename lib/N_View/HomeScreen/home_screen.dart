@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 @override
   void initState() {
-    Provider.of<E_Currier_Provierd>(context,listen: false).getProfileProvider(context);
+   Provider.of<E_Currier_Provierd>(context,listen: false).getProfileProvider(context);
     Provider.of<E_Currier_Provierd>(context,listen: false).getTotalOrderProvider(context);
 
     // TODO: implement initState

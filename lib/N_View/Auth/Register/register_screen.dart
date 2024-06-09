@@ -122,473 +122,340 @@ class _RegisterScreenState extends State<RegisterScreen> {
         centerTitle: true,
         leading: Icon(Icons.add,color:Colors.white,),
         title: CustomText(text: "Register", fontSize: 25, fontWeight: FontWeight.w900,letterSpacing: 0.2,color: Colors.black,)),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: EdgeInsets.all(10),
-        decoration:  BoxDecoration(
-
-        ),
-        alignment: Alignment.center,
+      body: RefreshIndicator(
+        onRefresh: () {
+          return Future.delayed(Duration(seconds: 1),() {
+            Provider.of<E_Currier_Provierd>(context,listen: false).PickupAreaProvider(context);
+          },);
+        },
         child: Container(
           height: double.infinity,
           width: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 15),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.black.withOpacity(0.1),
+          padding: EdgeInsets.all(10),
+          decoration:  BoxDecoration(
+
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: BackdropFilter(filter:ImageFilter.blur(sigmaY: 5,sigmaX: 5),
-                child:Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.all(10),
-                  child: SingleChildScrollView(
-                    child: Form(
-                      key: _formkey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 15,),
-                          // f1==false?
-                          // Container(
-                          // child: Column(
-                          //   children: [
-                          //     CustomTextfieldForm(name: "Shop Name", obscureText: false,controller: _shop_nameController),
-                          //     CustomTextfieldForm(name: "Merchant Name", obscureText: false,controller: _shop_merchantController,),
-                          //     CustomTextfieldForm(name: "Mobile Number", obscureText: false,controller: _phoneController,keyboardType: TextInputType.number),
-                          //     CustomTextfieldForm(name: "Shop Email", obscureText: false,controller: _emailControllerller),
-                          //     CustomTextfieldForm(name: "FB Link", obscureText: false,controller: _fb_linkController),
-                          //     CustomTextfieldForm(name: "Cod Charge", obscureText: false,controller: _cod_chargeController,keyboardType: TextInputType.number),
-                          //     CustomTextfieldForm(name: "Account no/M number", obscureText: false,controller: _bank_ac_numberController,keyboardType: TextInputType.number),
-                          //     CustomTextfieldForm(name: "Bank Name", obscureText: false,controller: _bank_nameController),
-                          //     CustomTextfieldForm(name: "Account Name", obscureText: false,controller: _bankaccount_nameController),
-                          //     CustomTextfieldForm(name: "Routing No", obscureText: false,controller: _routing_noController,keyboardType: TextInputType.number),
-                          //
-                          //     f4==true?Container():
-                          //
-                          //     CustomButton(onTap: () {
-                          //       setState(() {
-                          //         f2=true;
-                          //         f1=true;
-                          //       });
-                          //     }, text: "Submit", button_text_fontSize: 16, button_height: 50)
-                          //   ],
-                          // ),
-                          // )
-                          //     :
-                          // f2==true?
-                          // Container(
-                          // child: Column(
-                          //   children: [
-                          //     CustomTextfieldForm(name: "Account Type", obscureText: false,controller: _account_typeController),
-                          //     CustomTextfieldForm(name: "Branch", obscureText: false,controller: _branchController),
-                          //     CustomTextfieldForm(name: "Pickup Address", obscureText: false,controller: _picup_addressController),
-                          //     //  CustomTextfieldForm(name: "Status", obscureText: false,controller: _statusController,keyboardType: TextInputType.number),
-                          //     /// image section
-                          //     InkWell(
-                          //       onTap: () {
-                          //         getImageFromGallery();
-                          //       },
-                          //       child: Row(
-                          //         children: [
-                          //           CustomText(text: "Photo              ",color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                          //           Container(
-                          //             height: 80,
-                          //             width: 150,
-                          //             margin: EdgeInsets.all(10),
-                          //             decoration: BoxDecoration(
-                          //               borderRadius: BorderRadius.circular(20),
-                          //               color: Colors.white,
-                          //             ),
-                          //
-                          //             child: _image==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                          //             ClipRRect(
-                          //                 borderRadius: BorderRadius.circular(10),
-                          //                 child: Image.file(_image!.renameSync(_image!.path),fit: BoxFit.fill,)),
-                          //
-                          //             //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //     InkWell(
-                          //       onTap: () {
-                          //         getImageFromGallery2();
-                          //       },
-                          //       child: Row(
-                          //         children: [
-                          //           CustomText(text: "Cover Photo",color: Colors.white ,fontSize: 20, fontWeight: FontWeight.bold),
-                          //           Container(
-                          //             height: 80,
-                          //             width: 150,
-                          //             margin: EdgeInsets.all(10),
-                          //             decoration: BoxDecoration(
-                          //               borderRadius: BorderRadius.circular(20),
-                          //               color: Colors.white,
-                          //             ),
-                          //             child: _nidback==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                          //             ClipRRect(
-                          //                 borderRadius: BorderRadius.circular(10),
-                          //                 child: Image.file(_nidback!.renameSync(_nidback!.path),fit: BoxFit.fill,)),
-                          //
-                          //             //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //     InkWell(
-                          //       onTap: () {
-                          //         getImageFromGallery3();
-                          //       },
-                          //       child: Row(
-                          //         children: [
-                          //           CustomText(text: "Shop Licence   ",color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-                          //           Container(
-                          //             height: 80,
-                          //             width: 150,
-                          //             margin: EdgeInsets.all(10),
-                          //             decoration: BoxDecoration(
-                          //               borderRadius: BorderRadius.circular(20),
-                          //               color: Colors.white,
-                          //             ),
-                          //
-                          //             child: _shopelicenc==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                          //             ClipRRect(
-                          //                 borderRadius: BorderRadius.circular(10),
-                          //                 child: Image.file(_shopelicenc!.renameSync(_shopelicenc!.path),fit: BoxFit.fill,)),
-                          //
-                          //             //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //     InkWell(
-                          //       onTap: () {
-                          //         getImageFromGallery4();
-                          //       },
-                          //       child: Row(
-                          //         children: [
-                          //           CustomText(text: "NID                         ",color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-                          //           Container(
-                          //             height: 80,
-                          //             width: 150,
-                          //             margin: EdgeInsets.all(10),
-                          //             decoration: BoxDecoration(
-                          //               borderRadius: BorderRadius.circular(20),
-                          //               color: Colors.white,
-                          //             ),
-                          //
-                          //             child: NIDCARD==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                          //             ClipRRect(
-                          //                 borderRadius: BorderRadius.circular(10),
-                          //                 child: Image.file(NIDCARD!.renameSync(NIDCARD!.path),fit: BoxFit.fill,)),
-                          //
-                          //             //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //
-                          //     f4==true?Container():     CustomButton(onTap: () {
-                          //       setState(() {
-                          //         f2=false;
-                          //         f3=true;
-                          //       });
-                          //     }, text: "Submit", button_text_fontSize: 16, button_height: 50)
-                          //
-                          //   ],
-                          // ),
-                          // )
-                          //
-                          //      :
-                           Container(
-                             child: Column(
-                               children: [
-                                 Container(
-                                   child: Column(
-                                     children: [
-                                       Container(
-                                         height: 38,
-                                         width: double.infinity,
-                                         child: Row(
-                                           children: [
-                                             Expanded(
-                                                 flex: 2,
-                                                 child: CustomText(text: "Shop Name", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
-                                             Expanded(
-                                               flex: 3,
-                                               child: CustomTextFormFieldd(
-                                                 readOnly: false,
-                                                 maxline: 1, height: 38, hintext: "Enter name", controller:_shop_nameController , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
+          alignment: Alignment.center,
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            margin: const EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white),
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.black.withOpacity(0.1),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: BackdropFilter(filter:ImageFilter.blur(sigmaY: 5,sigmaX: 5),
+                  child:Container(
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(10),
+                    child: SingleChildScrollView(
+                      child: Form(
+                        key: _formkey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 15,),
+                             Container(
+                               child: Column(
+                                 children: [
+                                   Container(
+                                     child: Column(
+                                       children: [
+                                         Container(
+                                           height: 38,
+                                           width: double.infinity,
+                                           child: Row(
+                                             children: [
+                                               Expanded(
+                                                   flex: 2,
+                                                   child: CustomText(text: "Shop Name", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
+                                               Expanded(
+                                                 flex: 3,
+                                                 child: CustomTextFormFieldd(
+                                                   readOnly: false,
+                                                   maxline: 1, height: 38, hintext: "Enter name", controller:_shop_nameController , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
 
-                                               },),
-                                             )
-                                           ],
-                                         ),
-                                       ),
-                                       SizedBox(height: 15,),
-                                       Container(
-                                         height: 38,
-                                         width: double.infinity,
-                                         child: Row(
-                                           children: [
-                                             Expanded(
-                                                 flex: 2,
-                                                 child: CustomText(text: "Merchant Name", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
-                                             Expanded(
-                                               flex: 3,
-                                               child: CustomTextFormFieldd(
-                                                 readOnly: false,
-                                                 maxline: 1, height: 38, hintext: "Enter name", controller:_shop_merchantController , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
-
-                                               },),
-                                             )
-                                           ],
-                                         ),
-                                       ),
-                                       SizedBox(height: 15,),
-
-                                       Container(
-                                         height: 38,
-                                         width: double.infinity,
-                                         child: Row(
-                                           children: [
-                                             Expanded(
-                                                 flex: 2,
-                                                 child: CustomText(text: "Mobile number", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
-                                             Expanded(
-                                               flex: 3,
-                                               child: CustomTextFormFieldd(
-                                                 readOnly: false,
-                                                 maxline: 1, height: 38, hintext: " ", controller:_phoneController , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
-
-                                               },),
-                                             )
-                                           ],
-                                         ),
-                                       ),
-                                       SizedBox(height: 15,),
-
-                                       Container(
-                                         height: 38,
-                                         width: double.infinity,
-                                         child: Row(
-                                           children: [
-                                             Expanded(
-                                                 flex: 2,
-                                                 child: CustomText(text: "Shop Email", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
-                                             Expanded(
-                                               flex: 3,
-                                               child: CustomTextFormFieldd(
-                                                 readOnly: false,
-                                                 maxline: 1, height: 38, hintext: " ", controller:_emailControllerller , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
-
-                                               },),
-                                             )
-                                           ],
-                                         ),
-                                       ),
-                                       SizedBox(height: 15,),
-                                       
-                                       /// pickarea dropdown
-                                       Container(
-                                         margin: EdgeInsets.only(top: 10),
-                                         height: 50,
-                                         width: double.infinity,
-                                         padding: EdgeInsets.only(left: 15, right: 15),
-                                         decoration: BoxDecoration(
-                                             borderRadius: BorderRadius.circular(11),
-                                             border: Border.all(color:Colors.white,width: 2),
-                                             color: Colors.white
-                                         ),
-                                         child: IgnorePointer(
-                                           ignoring: false,
-                                           child: DropdownButton(
-                                             enableFeedback: true,
-                                             autofocus: false,
-                                             isExpanded: true,
-                                             hint: InkWell(
-                                                 onTap: () {}, child: Text('Select Pickup Area')),
-                                             // Not necessary for Option 1
-                                             value: pickarea,
-                                             onChanged: (newValue) {
-                                               setState(() {
-                                                 pickarea = newValue.toString();
-
-                                               });
-                                             },
-                                             items:PickupArea.map((location) {
-                                               return DropdownMenuItem(
-                                                 child: Card(
-                                                     child: Container(
-                                                       width: double.infinity,
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: Text("${location["name"] ?? ""}"),
-                                                     )),
-                                                 value: "${location["id"]}",
-                                               );
-                                             }).toList(),
+                                                 },),
+                                               )
+                                             ],
                                            ),
                                          ),
-                                       ),
-                                     ],
+                                         SizedBox(height: 15,),
+                                         Container(
+                                           height: 38,
+                                           width: double.infinity,
+                                           child: Row(
+                                             children: [
+                                               Expanded(
+                                                   flex: 2,
+                                                   child: CustomText(text: "Merchant Name", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
+                                               Expanded(
+                                                 flex: 3,
+                                                 child: CustomTextFormFieldd(
+                                                   readOnly: false,
+                                                   maxline: 1, height: 38, hintext: "Enter name", controller:_shop_merchantController , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
+
+                                                 },),
+                                               )
+                                             ],
+                                           ),
+                                         ),
+                                         SizedBox(height: 15,),
+
+                                         Container(
+                                           height: 38,
+                                           width: double.infinity,
+                                           child: Row(
+                                             children: [
+                                               Expanded(
+                                                   flex: 2,
+                                                   child: CustomText(text: "Mobile number", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
+                                               Expanded(
+                                                 flex: 3,
+                                                 child: CustomTextFormFieldd(
+                                                   readOnly: false,
+                                                   maxline: 1, height: 38, hintext: " ", controller:_phoneController , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
+
+                                                 },),
+                                               )
+                                             ],
+                                           ),
+                                         ),
+                                         SizedBox(height: 15,),
+
+                                         Container(
+                                           height: 38,
+                                           width: double.infinity,
+                                           child: Row(
+                                             children: [
+                                               Expanded(
+                                                   flex: 2,
+                                                   child: CustomText(text: "Shop Email", fontSize: 15, fontWeight: FontWeight.w700,color: customredcolor,)),
+                                               Expanded(
+                                                 flex: 3,
+                                                 child: CustomTextFormFieldd(
+                                                   readOnly: false,
+                                                   maxline: 1, height: 38, hintext: " ", controller:_emailControllerller , obscureText: false, keyboardType: TextInputType.text, onChanged: (value) {
+
+                                                 },),
+                                               )
+                                             ],
+                                           ),
+                                         ),
+                                         SizedBox(height: 15,),
+
+                                         /// pickarea dropdown
+                                         Consumer<E_Currier_Provierd>(
+                                           builder: (context, value, child) {
+                                            return Container(
+                                               margin: EdgeInsets.only(top: 10),
+                                               height: 50,
+                                               width: double.infinity,
+                                               padding: EdgeInsets.only(left: 15, right: 15),
+                                               decoration: BoxDecoration(
+                                                   borderRadius: BorderRadius.circular(11),
+                                                   border: Border.all(color:Colors.white,width: 2),
+                                                   color: Colors.white
+                                               ),
+                                               child: IgnorePointer(
+                                                 ignoring: false,
+                                                 child: DropdownButton(
+                                                   enableFeedback: true,
+                                                   autofocus: false,
+                                                   isExpanded: true,
+                                                   hint: InkWell(
+                                                       onTap: () {}, child: Text('Select Pickup Area')),
+                                                   // Not necessary for Option 1
+                                                   value: pickarea,
+                                                   onChanged: (newValue) {
+                                                     setState(() {
+                                                       pickarea = newValue.toString();
+
+                                                     });
+                                                   },
+                                                   items:value.PickupArea.map((location) {
+                                                     return DropdownMenuItem(
+                                                       child: Card(
+                                                           child: Container(
+                                                             width: double.infinity,
+                                                             padding: const EdgeInsets.all(8.0),
+                                                             child: Text("${location["name"] ?? ""}"),
+                                                           )),
+                                                       value: "${location["id"]}",
+                                                     );
+                                                   }).toList(),
+                                                 ),
+                                               ),
+                                             );
+                                           },
+                                         ),
+                                       ],
+                                     ),
                                    ),
-                                 ),
 
-                                 Container(
-                                   child: Column(
-                                     children: [
-                                       /// image section
-                                       InkWell(
-                                         onTap: () {
-                                           getImageFromGallery();
-                                         },
-                                         child: Row(
-                                           crossAxisAlignment: CrossAxisAlignment.center,
-                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                           children: [
-                                             CustomText(text: "Photo              ",color: redColor, fontSize: 20, fontWeight: FontWeight.bold),
-                                             Expanded(
-                                               child: Container(
-                                                 height: 80,
-                                                 width: 150,
-                                                 margin: EdgeInsets.all(10),
-                                                 decoration: BoxDecoration(
-                                                   borderRadius: BorderRadius.circular(20),
-                                                   color: Colors.white,
+                                   Container(
+                                     child: Column(
+                                       children: [
+                                         /// image section
+                                         InkWell(
+                                           onTap: () {
+                                             getImageFromGallery();
+                                           },
+                                           child: Row(
+                                             crossAxisAlignment: CrossAxisAlignment.center,
+                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                             children: [
+                                               CustomText(text: "Photo              ",color: redColor, fontSize: 20, fontWeight: FontWeight.bold),
+                                               Expanded(
+                                                 child: Container(
+                                                   height: 80,
+                                                   width: 150,
+                                                   margin: EdgeInsets.all(10),
+                                                   decoration: BoxDecoration(
+                                                     borderRadius: BorderRadius.circular(20),
+                                                     color: Colors.white,
+                                                   ),
+
+                                                   child: _image==null? Icon(Icons.camera_alt_outlined,size: 32,):
+                                                   ClipRRect(
+                                                       borderRadius: BorderRadius.circular(10),
+                                                       child: Image.file(_image!.renameSync(_image!.path),fit: BoxFit.fill,)),
+
+                                                   //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                  ),
-                                               
-                                                 child: _image==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                                                 ClipRRect(
-                                                     borderRadius: BorderRadius.circular(10),
-                                                     child: Image.file(_image!.renameSync(_image!.path),fit: BoxFit.fill,)),
-                                               
-                                                 //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                ),
-                                             ),
-                                           ],
+                                             ],
+                                           ),
                                          ),
-                                       ),
 
-                                       /// shop licence
-                                       InkWell(
-                                         onTap: () {
-                                           getImageFromGallery3();
-                                         },
-                                         child: Row(
-                                           crossAxisAlignment: CrossAxisAlignment.center,
-                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                           children: [
-                                             CustomText(text: "Shop Licence   ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
-                                             Expanded(
-                                               child: Container(
-                                                 height: 80,
-                                                 width: 150,
-                                                 margin: EdgeInsets.all(10),
-                                                 decoration: BoxDecoration(
-                                                   borderRadius: BorderRadius.circular(20),
-                                                   color: Colors.white,
+                                         /// shop licence
+                                         InkWell(
+                                           onTap: () {
+                                             getImageFromGallery3();
+                                           },
+                                           child: Row(
+                                             crossAxisAlignment: CrossAxisAlignment.center,
+                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                             children: [
+                                               CustomText(text: "Shop Licence   ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
+                                               Expanded(
+                                                 child: Container(
+                                                   height: 80,
+                                                   width: 150,
+                                                   margin: EdgeInsets.all(10),
+                                                   decoration: BoxDecoration(
+                                                     borderRadius: BorderRadius.circular(20),
+                                                     color: Colors.white,
+                                                   ),
+
+                                                   child: _shopelicenc==null? Icon(Icons.camera_alt_outlined,size: 32,):
+                                                   ClipRRect(
+                                                       borderRadius: BorderRadius.circular(10),
+                                                       child: Image.file(_shopelicenc!.renameSync(_shopelicenc!.path),fit: BoxFit.fill,)),
+
+                                                   //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                  ),
-                                               
-                                                 child: _shopelicenc==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                                                 ClipRRect(
-                                                     borderRadius: BorderRadius.circular(10),
-                                                     child: Image.file(_shopelicenc!.renameSync(_shopelicenc!.path),fit: BoxFit.fill,)),
-                                               
-                                                 //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                ),
-                                             ),
-                                           ],
+                                             ],
+                                           ),
                                          ),
-                                       ),
-                                       /// NID FONT
-                                       InkWell(
-                                         onTap: () {
-                                           NIDFONTimage();
-                                         },
-                                         child: Row(
-                                           crossAxisAlignment: CrossAxisAlignment.center,
-                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                           children: [
-                                             CustomText(text: "NID FONT           ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
-                                             Expanded(
-                                               child: Container(
-                                                 height: 80,
-                                                 width: 150,
-                                                 margin: EdgeInsets.all(10),
-                                                 decoration: BoxDecoration(
-                                                   borderRadius: BorderRadius.circular(20),
-                                                   color: Colors.white,
+                                         /// NID FONT
+                                         InkWell(
+                                           onTap: () {
+                                             NIDFONTimage();
+                                           },
+                                           child: Row(
+                                             crossAxisAlignment: CrossAxisAlignment.center,
+                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                             children: [
+                                               CustomText(text: "NID FONT           ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
+                                               Expanded(
+                                                 child: Container(
+                                                   height: 80,
+                                                   width: 150,
+                                                   margin: EdgeInsets.all(10),
+                                                   decoration: BoxDecoration(
+                                                     borderRadius: BorderRadius.circular(20),
+                                                     color: Colors.white,
+                                                   ),
+
+                                                   child: NIDFONT==null? Icon(Icons.camera_alt_outlined,size: 32,):
+                                                   ClipRRect(
+                                                       borderRadius: BorderRadius.circular(10),
+                                                       child: Image.file(NIDFONT!.renameSync(NIDFONT!.path),fit: BoxFit.fill,)),
+
+                                                   //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                  ),
-                                               
-                                                 child: NIDFONT==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                                                 ClipRRect(
-                                                     borderRadius: BorderRadius.circular(10),
-                                                     child: Image.file(NIDFONT!.renameSync(NIDFONT!.path),fit: BoxFit.fill,)),
-                                               
-                                                 //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                ),
-                                             ),
-                                           ],
+                                             ],
+                                           ),
                                          ),
-                                       ),
-                                       /// NID BACK
-                                       InkWell(
-                                         onTap: () {
-                                           NIDBACKimage();
-                                         },
-                                         child: Row(
-                                           crossAxisAlignment: CrossAxisAlignment.center,
-                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                           children: [
-                                             CustomText(text: "NID BACK         ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
-                                             Expanded(
-                                               child: Container(
-                                                 height: 80,
-                                                 width: 150,
-                                                 margin: EdgeInsets.all(10),
-                                                 decoration: BoxDecoration(
-                                                   borderRadius: BorderRadius.circular(20),
-                                                   color: Colors.white,
+                                         /// NID BACK
+                                         InkWell(
+                                           onTap: () {
+                                             NIDBACKimage();
+                                           },
+                                           child: Row(
+                                             crossAxisAlignment: CrossAxisAlignment.center,
+                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                             children: [
+                                               CustomText(text: "NID BACK         ",color: redColor, fontSize: 17, fontWeight: FontWeight.bold),
+                                               Expanded(
+                                                 child: Container(
+                                                   height: 80,
+                                                   width: 150,
+                                                   margin: EdgeInsets.all(10),
+                                                   decoration: BoxDecoration(
+                                                     borderRadius: BorderRadius.circular(20),
+                                                     color: Colors.white,
+                                                   ),
+
+                                                   child: NIDBACK==null? Icon(Icons.camera_alt_outlined,size: 32,):
+                                                   ClipRRect(
+                                                       borderRadius: BorderRadius.circular(10),
+                                                       child: Image.file(NIDBACK!.renameSync(NIDBACK!.path),
+                                                         fit: BoxFit.fill,)),
+
+                                                   //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                  ),
-                                               
-                                                 child: NIDBACK==null? Icon(Icons.camera_alt_outlined,size: 32,):
-                                                 ClipRRect(
-                                                     borderRadius: BorderRadius.circular(10),
-                                                     child: Image.file(NIDBACK!.renameSync(NIDBACK!.path),
-                                                       fit: BoxFit.fill,)),
-                                               
-                                                 //child:  _courseImage==null? Icon(Icons.camera_alt_outlined,size: 32,):Center(child: Image.file("_imageeurl")),
                                                ),
-                                             ),
-                                           ],
+                                             ],
+                                           ),
                                          ),
-                                       ),
-                                       /// Password section
-                                       ///
-                                       CustomTextfieldForm(name: "Password", obscureText: false,controller: _passwordController),
-                                       CustomTextfieldForm(name: "Confirm Password", obscureText: false,controller: _conPassController),
+                                         /// Password section
+                                         ///
+                                         CustomTextfieldForm(name: "Password", obscureText: false,controller: _passwordController),
+                                         CustomTextfieldForm(name: "Confirm Password", obscureText: false,controller: _conPassController),
 
-                                       SizedBox(height: 20,),
-                                       is_clicked_register==true?CircularProgressIndicator(
+                                         SizedBox(height: 20,),
+                                         is_clicked_register==true?CircularProgressIndicator(
 
-                                       ):    CustomButton(onTap: () {
-                                         if(_formkey.currentState!.validate()  &&
-                                         pickarea!=null  ){
+                                         ):    CustomButton(onTap: () {
+                                           if(_formkey.currentState!.validate()  &&
+                                           pickarea!=null  ){
 
-                                           if(_passwordController.text.length>7){
-                                             if(_passwordController.text==_conPassController.text){
-                                               registerSeller();
-                                               setState(() {
-                                                 is_clicked_register=true;
-                                               });
+                                             if(_passwordController.text.length>7){
+                                               if(_passwordController.text==_conPassController.text){
+                                                 registerSeller();
+                                                 setState(() {
+                                                   is_clicked_register=true;
+                                                 });
+                                               }else{
+                                                 Flushbar(
+                                                   flushbarPosition: FlushbarPosition.TOP,
+                                                   title:  "Password did not matched",
+                                                   message:  "Try again ...",
+                                                   duration:  Duration(seconds: 1),
+                                                 )..show(context);
+                                               }
+
                                              }else{
                                                Flushbar(
                                                  flushbarPosition: FlushbarPosition.TOP,
-                                                 title:  "Password did not matched",
+                                                 title:  "Password must be 8 diigit",
                                                  message:  "Try again ...",
                                                  duration:  Duration(seconds: 1),
                                                )..show(context);
@@ -597,44 +464,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                            }else{
                                              Flushbar(
                                                flushbarPosition: FlushbarPosition.TOP,
-                                               title:  "Password must be 8 diigit",
+                                               title:  "Please fill all the field",
                                                message:  "Try again ...",
                                                duration:  Duration(seconds: 1),
                                              )..show(context);
                                            }
 
-                                         }else{
-                                           Flushbar(
-                                             flushbarPosition: FlushbarPosition.TOP,
-                                             title:  "Please fill all the field",
-                                             message:  "Try again ...",
-                                             duration:  Duration(seconds: 1),
-                                           )..show(context);
-                                         }
-
-                                       }, text: "Register", button_text_fontSize: 16, button_height: 50),
-                                       is_clicked_register==true?Container():    SizedBox(height: 15,),
-                                       is_clicked_register==true?Container():      InkWell(
-                                           onTap: () {
-                                             Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
-                                           },
-                                           child: Center(child: TextUtil(text: "Do you have an account LOGIN",size: 12,weight: true,))),
-                                     ],
-                                   ),
-                                 )
-                               ],
+                                         }, text: "Register", button_text_fontSize: 16, button_height: 50),
+                                         is_clicked_register==true?Container():    SizedBox(height: 15,),
+                                         is_clicked_register==true?Container():      InkWell(
+                                             onTap: () {
+                                               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                                             },
+                                             child: Center(child: TextUtil(text: "Do you have an account LOGIN",size: 12,weight: true,))),
+                                       ],
+                                     ),
+                                   )
+                                 ],
+                               ),
                              ),
-                           ),
 
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ) ,
+                  ) ,
+                ),
               ),
             ),
-          ),
+        ),
       ),
     );
   }
@@ -688,7 +547,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       request.fields['account_type'] = _account_typeController.text.toString();
       request.fields['branch'] = _branchController.text.toString();
       request.fields['picup_address'] = _picup_addressController.text.toString();
-      print("ssssssssssssssssssssssssssssssssss ${ _image!.path.toString()}");
+   //   print("ssssssssssssssssssssssssssssssssss ${ _image!.path.toString()}");
       var nid_cardd = await http.MultipartFile.fromPath('image', _image!.path.toString());
       request.files.add(nid_cardd);
 
@@ -705,8 +564,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       var response = await request.send();
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);
-      print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.statusCode}");
+    //  print("xxxxxxxxxxxxxxxxxxxxxxxxxxx ${response.statusCode}");
          if(response.statusCode==200){
+           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+               duration: Duration(seconds: 1),
+               content: Text("Registration successful")));
            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
          }else{
            setState(() {
