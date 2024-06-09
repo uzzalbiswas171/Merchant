@@ -1,4 +1,4 @@
-package com.ocadocourier.example.e_currier
+package com.example.e_currier
 
 import io.flutter.embedding.android.FlutterActivity
 
